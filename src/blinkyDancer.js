@@ -30,9 +30,10 @@ var MakeBlinkyDancer = function(top, left, timeBetweenSteps){
   // so we must keep a copy of the old version of this function
 
   // return this;
+  MakeDancer.call(this, arguments);
 };
-
-MakeBlinkyDancer.prototype = new MakeDancer();
+// MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
+MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
 MakeBlinkyDancer.prototype.constructor = MakeBlinkyDancer;
 
 MakeBlinkyDancer.prototype.step = function(){
