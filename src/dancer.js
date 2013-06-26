@@ -1,4 +1,3 @@
-
 var MakeDancer = function(top, left, timeBetweenSteps){
   return new Dancer(top, left, timeBetweenSteps);
 };
