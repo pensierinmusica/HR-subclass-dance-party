@@ -55,8 +55,6 @@
 
         var alignDancer = function() {
           for (var i = 0; i < dancers.length; i++) {
-            console.log(dancers[i]);
-            dancers[i].$node.stop();
             dancers[i].$node.animate({left: 0, top: i*20}, 'slow');
           }
         };
