@@ -4,6 +4,7 @@ var MakeRainbowDancer = function(top, left, timeBetweenSteps){
 
 var RainbowDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, arguments);
+  this.timeBetweenSteps = 4200;
   // this.changecolor();
 };
 // MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
@@ -25,6 +26,4 @@ RainbowDancer.prototype.step = function(){
   this.$node.animate({'color':'purple'}, 'slow');
   this.$node.animate({'color':'orange'}, 'slow');
   this.$node.animate({'color':'peachpuff'}, 'slow');
-  //
-
 };

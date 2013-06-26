@@ -4,15 +4,19 @@
     <title>Object Dance Party</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="lib/jquery.js"></script>
+    <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
     <script src="src/dancer.js"></script>
     <script src="src/blinkyDancer.js"></script>
+    <script src="src/rainbowDancer.js"></script>
   </head>
   <body>
 
     <div class="topbar">
       <span class="title">object dance party</span>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeBlinkyDancer">add a dancer</a>
-      <!-- <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeExplodingDancer">add a dancer</a> -->
+      <a href="#" class="alignDancerButton" data-dancer-maker-function-name="alignDancers">align dancers</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeRainbowDancer">add a rainbow dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeBlinkyDancer">add a blinky dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeDancer">add a dancer</a>
     </div>
 
     <script>
@@ -38,14 +42,29 @@
           var dancerMakerFunction = window[dancerMakerFunctionName];
 
           // make a dancer with a random position
-          var dancer = new MakeBlinkyDancer(
+          var dancer = dancerMakerFunction(
             $("body").height() * Math.random(),
             $("body").width() * Math.random(),
             Math.random() * 1000
           );
 
+          dancers.push(dancer);
+
           $('body').append(dancer.$node);
         });
+
+        var alignDancer = function() {
+          for (var i = 0; i < dancers.length; i++) {
+            console.log(dancers[i]);
+            dancers[i].$node.stop();
+            dancers[i].$node.animate({left: 0, top: i*20}, 'slow');
+          }
+        };
+
+        $(".alignDancerButton").on("click", function(event){
+          alignDancer();
+        });
+
       });
     </script>
 
